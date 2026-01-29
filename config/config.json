@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "intranet-header-tabs-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/intranetHeaderTabs/IntranetHeaderTabsWebPart.js",
+          "manifest": "./src/webparts/intranetHeaderTabs/IntranetHeaderTabsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "IntranetHeaderTabsWebPartStrings": "lib/webparts/intranetHeaderTabs/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

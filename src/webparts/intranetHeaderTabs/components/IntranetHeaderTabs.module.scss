@@ -1,0 +1,196 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.intranetHeaderTabs {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $ms-font-family-fallbacks;
+  
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+// Header Styles
+.headerContainer {
+  width: 100%;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 0 1rem;
+}
+
+.headerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+}
+
+.headerTitleContainer {
+  padding: 1rem 0;
+  
+  @media (min-width: 768px) {
+    padding: 0;
+  }
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+// Navigation Styles
+.navContainer {
+  width: 100%;
+  
+  @media (min-width: 768px) {
+    width: auto;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    gap: 0;
+  }
+}
+
+.navItem {
+  flex: 1 1 auto;
+  min-width: 120px;
+  
+  @media (min-width: 768px) {
+    flex: 0 0 auto;
+  }
+}
+
+.navLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+  }
+  
+  &:active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  @media (min-width: 768px) {
+    padding: 0.75rem 1.5rem;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.noTabs {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+// Welcome Section Styles
+.welcomeContainer {
+  width: 100%;
+  padding: 3rem 1rem;
+  background-color: #f3f2f1;
+  color: #323130;
+}
+
+.welcomeContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.welcomeMessage {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.welcomeSubtitle {
+  margin: 0;
+  font-size: 1.125rem;
+  color: inherit;
+  opacity: 0.8;
+}
+
+// Loading and Error States
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #0078d4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorContainer {
+  padding: 2rem;
+}
+
+.retryButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #106ebe;
+  }
+}
