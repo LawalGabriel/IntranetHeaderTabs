@@ -17,8 +17,10 @@
     "properties": {
       "description": "Intranet Header Tabs",
       "headerTitle": "THE HUB",
+      "headerTitleColor": "#ffffff",
       "headerBackgroundColor": "#1a1a1a",
       "headerTextColor": "#ffffff",
+      "logoUrl": "",
       "welcomeBackgroundColor": "#f3f2f1",
       "welcomeTextColor": "#323130",
       "welcomeMessage": "Welcome, {user}",

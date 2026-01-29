@@ -102,13 +102,28 @@ const IntranetHeaderTabs: React.FC<IIntranetHeaderTabsProps> = (props) => {
       <div 
         className={styles.headerContainer}
         style={{ 
-          backgroundColor: props.headerBackgroundColor || '#1a1a1a',
-          color: props.headerTextColor || '#ffffff'
+          backgroundColor: props.headerBackgroundColor || '#1a1a1a'
         }}
       >
         <div className={styles.headerContent}>
           <div className={styles.headerTitleContainer}>
-            <h1 className={styles.headerTitle}>
+            {props.logoUrl && (
+              <div className={styles.logoContainer}>
+                <img 
+                  src={props.logoUrl} 
+                  alt="Logo" 
+                  className={styles.logoImage}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              </div>
+            )}
+            <h1 
+              className={styles.headerTitle}
+              style={{ color: props.headerTitleColor || props.headerTextColor || '#ffffff' }}
+            >
               {props.headerTitle || 'THE HUB'}
             </h1>
           </div>

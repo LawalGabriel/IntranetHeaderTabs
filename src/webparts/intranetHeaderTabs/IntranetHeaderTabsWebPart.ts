@@ -4,8 +4,7 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneSlider,
- 
+  PropertyPaneSlider
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -17,8 +16,10 @@ import { IIntranetHeaderTabsProps } from './components/IIntranetHeaderTabsProps'
 export interface IIntranetHeaderTabsWebPartProps {
   description: string;
   headerTitle: string;
+  headerTitleColor: string;
   headerBackgroundColor: string;
   headerTextColor: string;
+  logoUrl: string;
   welcomeBackgroundColor: string;
   welcomeTextColor: string;
   welcomeMessage: string;
@@ -35,12 +36,14 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
   protected getDefaultProperties(): Partial<IIntranetHeaderTabsWebPartProps> {
     return {
       headerTitle: 'THE HUB',
+      headerTitleColor: '#ffffff',
       headerBackgroundColor: '#1a1a1a',
       headerTextColor: '#ffffff',
+      logoUrl: '',
       welcomeBackgroundColor: '#f3f2f1',
       welcomeTextColor: '#323130',
       welcomeMessage: 'Welcome, {user}',
-      maxTabsToShow: 0, // 0 means show all
+      maxTabsToShow: 0,
       listTitle: 'HeaderTabs'
     };
   }
@@ -57,8 +60,10 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
         listTitle: this.properties.listTitle,
         context: this.context,
         headerTitle: this.properties.headerTitle,
+        headerTitleColor: this.properties.headerTitleColor,
         headerBackgroundColor: this.properties.headerBackgroundColor,
         headerTextColor: this.properties.headerTextColor,
+        logoUrl: this.properties.logoUrl,
         welcomeBackgroundColor: this.properties.welcomeBackgroundColor,
         welcomeTextColor: this.properties.welcomeTextColor,
         welcomeMessage: this.properties.welcomeMessage,
@@ -139,15 +144,25 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
                   label: 'Header Title',
                   value: this.properties.headerTitle
                 }),
+                PropertyPaneTextField('headerTitleColor', {
+                  label: 'Header Title Color',
+                  value: this.properties.headerTitleColor,
+                  description: 'Enter hex color code (e.g., #ffffff)'
+                }),
                 PropertyPaneTextField('headerBackgroundColor', {
                   label: 'Header Background Color',
                   value: this.properties.headerBackgroundColor,
                   description: 'Enter hex color code (e.g., #1a1a1a)'
                 }),
                 PropertyPaneTextField('headerTextColor', {
-                  label: 'Header Text Color',
+                  label: 'Header Tabs Text Color',
                   value: this.properties.headerTextColor,
                   description: 'Enter hex color code (e.g., #ffffff)'
+                }),
+                PropertyPaneTextField('logoUrl', {
+                  label: 'Logo Image URL',
+                  value: this.properties.logoUrl,
+                  description: 'Enter the full URL of your logo image'
                 })
               ]
             },

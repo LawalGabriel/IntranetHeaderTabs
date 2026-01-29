@@ -1,24 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IIntranetHeaderTabsProps {
- 
+  description: string;
   isDarkTheme: boolean;
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
   listTitle: string;
   context: any;
-  errorContainer?: string;
   
-  // New properties
+  // Header Configuration
   headerTitle: string;
+  headerTitleColor: string;
   headerBackgroundColor: string;
   headerTextColor: string;
+  logoUrl: string;
+  
+  // Welcome Section Configuration
   welcomeBackgroundColor: string;
   welcomeTextColor: string;
   welcomeMessage: string;
+  
+  // Tabs Configuration
   maxTabsToShow: number;
-  loadingcontainer?: string;
-  description?: string;
 }
 
 export interface IHeaderTab {
