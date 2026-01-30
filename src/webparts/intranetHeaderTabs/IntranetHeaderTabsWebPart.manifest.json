@@ -27,6 +27,7 @@
       "welcomeMessage": "Welcome, {user}",
       "maxTabsToShow": 0,
       "listTitle": "HeaderTabs"
+      
     }
   }]
 }

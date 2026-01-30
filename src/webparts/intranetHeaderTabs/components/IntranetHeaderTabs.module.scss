@@ -76,6 +76,7 @@
   text-align: center;
   position: relative;
   overflow: hidden; // Add this to contain the shape
+  height: 200px;
   
   // Create trapezium shape using clip-path
   clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 80%);
