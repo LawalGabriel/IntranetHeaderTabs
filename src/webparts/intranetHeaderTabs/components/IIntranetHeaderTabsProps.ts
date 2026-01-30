@@ -8,6 +8,9 @@ export interface IIntranetHeaderTabsProps {
   listTitle: string;
   logoListTitle?: string;
   context: any;
+ headerHeight?: number;
+  headerTitleFontSize?: string;
+  tabsFontSize?: string;
   
   // Header Configuration
   headerTitle: string;
@@ -15,6 +18,8 @@ export interface IIntranetHeaderTabsProps {
   headerBackgroundColor: string;
   headerTextColor: string;
   logoUrl: string;
+  //headerHeight?: number;
+ 
   
   // Welcome Section Configuration
   welcomeBackgroundColor: string;

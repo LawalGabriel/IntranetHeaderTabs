@@ -14,6 +14,9 @@ import IntranetHeaderTabs from './components/IntranetHeaderTabs';
 import { IIntranetHeaderTabsProps } from './components/IIntranetHeaderTabsProps';
 
 export interface IIntranetHeaderTabsWebPartProps {
+  tabsFontSize: string | undefined;
+  headerTitleFontSize: string | undefined;
+  headerHeight: number | undefined;
   logoListTitle: string;
   description: string;
   headerTitle: string;
@@ -45,7 +48,10 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
       welcomeTextColor: '#323130',
       welcomeMessage: 'Welcome, {user}',
       maxTabsToShow: 0,
-      listTitle: 'HeaderTabs'
+      listTitle: 'HeaderTabs',
+      headerHeight: 60,
+    headerTitleFontSize: '24px',
+    tabsFontSize: '16px'
     };
   }
 
@@ -69,7 +75,10 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
         welcomeTextColor: this.properties.welcomeTextColor,
         welcomeMessage: this.properties.welcomeMessage,
         maxTabsToShow: this.properties.maxTabsToShow,
-        logoListTitle: this.properties.logoListTitle || "LogoList"
+        logoListTitle: this.properties.logoListTitle || "LogoList",
+         headerHeight: this.properties.headerHeight,
+      headerTitleFontSize: this.properties.headerTitleFontSize,
+      tabsFontSize: this.properties.tabsFontSize
         
         
       }
@@ -167,7 +176,20 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
                   label: 'Logo Image URL',
                   value: this.properties.logoUrl,
                   description: 'Enter the full URL of your logo image'
-                })
+                }),
+                PropertyPaneTextField('headerHeight', {
+                label: 'Header Height (px)',
+                description: 'Set the height of the header in pixels (e.g., 60)',
+              }),
+              PropertyPaneTextField('headerTitleFontSize', {
+                label: 'Header Title Font Size',
+                description: 'Set the font size for header title (e.g., 24px, 1.5rem)',
+              }),
+              PropertyPaneTextField('tabsFontSize', {
+                label: 'Tabs Font Size',
+                description: 'Set the font size for navigation tabs (e.g., 16px, 1rem)',
+              }),
+              
               ]
             },
             {

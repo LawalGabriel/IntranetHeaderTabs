@@ -124,83 +124,90 @@ const IntranetHeaderTabs: React.FC<IIntranetHeaderTabsProps> = (props) => {
     );
   }
 
-  return (
-    <div className={styles.intranetHeaderTabs}>
-      {/* Header Section - All in one line */}
-      <div 
-        className={styles.headerContainer}
-        style={{ 
-          backgroundColor: props.headerBackgroundColor || '#1a1a1a'
-        }}
-      >
-        {/* Logo */}
-        {attachmentFiles.length > 0 && attachmentFiles[0].AttachmentFiles && attachmentFiles[0].AttachmentFiles.length > 0 && (
-          <div className={styles.logoContainer}>
-            <img
-              src={attachmentFiles[0].AttachmentFiles[0].ServerRelativeUrl}
-              alt={attachmentFiles[0].Title || 'Logo'}
-              className={styles.logoImage}
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
-            />
-          </div>
-        )}
-        
-        {/* Title */}
-        <h1 
-          className={styles.headerTitle}
-          style={{ color: props.headerTitleColor || props.headerTextColor || '#ffffff' }}
-        >
-          {props.headerTitle || 'HUB'}
-        </h1>
-        
-        {/* Navigation Tabs */}
-        <nav className={styles.navContainer}>
-          <ul className={styles.navList}>
-            {headerTabs.length === 0 ? (
-              <li className={styles.navItem}>
-                <span className={styles.noTabs}>No tabs configured</span>
-              </li>
-            ) : (
-              headerTabs.map((item: IHeaderTab) => (
-                <li key={item.Id} className={styles.navItem}>
-                  <a 
-                    href={getLinkUrl(item.Link)}
-                    target={item.OpenInNewTab ? '_blank' : '_self'}
-                    rel={item.OpenInNewTab ? 'noopener noreferrer' : ''}
-                    className={styles.navLink}
-                    style={{ color: props.headerTextColor || '#ffffff' }}
-                  >
-                    {item.Title}
-                  </a>
-                </li>
-              ))
-            )}
-          </ul>
-        </nav>
-      </div>
-
-      {/* Welcome Section */}
-      <div 
-        className={styles.welcomeContainer}
-        style={{ 
-          backgroundColor: props.welcomeBackgroundColor || '#f3f2f1',
-          color: props.welcomeTextColor || '#323130'
-        }}
-      >
-        <div className={styles.welcomeContent}>
-          <h2 className={styles.welcomeMessage}>
-            {formatWelcomeMessage()}
-          </h2>
-          <p className={styles.welcomeSubtitle}>
-            What do you need help with today?
-          </p>
+return (
+  <div className={styles.intranetHeaderTabs}>
+    {/* Header Section - All in one line */}
+    <div 
+      className={styles.headerContainer}
+      style={{ 
+        backgroundColor: props.headerBackgroundColor || '#1a1a1a',
+        minHeight: props.headerHeight ? `${props.headerHeight}px` : '60px' // NEW: configurable height
+      }}
+    >
+      {/* Logo */}
+      {attachmentFiles.length > 0 && attachmentFiles[0].AttachmentFiles && attachmentFiles[0].AttachmentFiles.length > 0 && (
+        <div className={styles.logoContainer}>
+          <img
+            src={attachmentFiles[0].AttachmentFiles[0].ServerRelativeUrl}
+            alt={attachmentFiles[0].Title || 'Logo'}
+            className={styles.logoImage}
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
         </div>
+      )}
+      
+      {/* Title */}
+      <h1 
+        className={styles.headerTitle}
+        style={{ 
+          color: props.headerTitleColor || props.headerTextColor || '#ffffff',
+          fontSize: props.headerTitleFontSize || '24px' // NEW: configurable font size
+        }}
+      >
+        {props.headerTitle || 'HUB'}
+      </h1>
+      
+      {/* Navigation Tabs */}
+      <nav className={styles.navContainer}>
+        <ul className={styles.navList}>
+          {headerTabs.length === 0 ? (
+            <li className={styles.navItem}>
+              <span className={styles.noTabs}>No tabs configured</span>
+            </li>
+          ) : (
+            headerTabs.map((item: IHeaderTab) => (
+              <li key={item.Id} className={styles.navItem}>
+                <a 
+                  href={getLinkUrl(item.Link)}
+                  target={item.OpenInNewTab ? '_blank' : '_self'}
+                  rel={item.OpenInNewTab ? 'noopener noreferrer' : ''}
+                  className={styles.navLink}
+                  style={{ 
+                    color: props.headerTextColor || '#ffffff',
+                    fontSize: props.tabsFontSize || '16px' // NEW: configurable font size
+                  }}
+                >
+                  {item.Title}
+                </a>
+              </li>
+            ))
+          )}
+        </ul>
+      </nav>
+    </div>
+
+    {/* Welcome Section - Trapezium shape */}
+    <div 
+      className={styles.welcomeContainer}
+      style={{ 
+        backgroundColor: props.welcomeBackgroundColor || '#f3f2f1',
+        color: props.welcomeTextColor || '#323130'
+      }}
+    >
+      <div className={styles.welcomeContent}>
+        <h2 className={styles.welcomeMessage}>
+          {formatWelcomeMessage()}
+        </h2>
+        <p className={styles.welcomeSubtitle}>
+          What do you need help with today?
+        </p>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default IntranetHeaderTabs;
