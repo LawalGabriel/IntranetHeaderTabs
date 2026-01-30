@@ -1,194 +1,115 @@
-@import '~@fluentui/react/dist/sass/References.scss';
-
 .intranetHeaderTabs {
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: $ms-font-family-fallbacks;
-  
-  &.teams {
-    font-family: $ms-font-family-fallbacks;
-  }
 }
 
-// Header Styles
+// Header container - flexbox to align logo, title, and nav horizontally
 .headerContainer {
-  width: 100%;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  padding: 0 1rem;
-}
-
-.headerContent {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  
-  @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-  }
-}
-
-.headerTitleContainer {
   display: flex;
   align-items: center;
-  padding: 1rem 0;
-  gap: 1rem;
-  
-  @media (min-width: 768px) {
-    padding: 0;
-  }
+  padding: 10px 20px;
+  gap: 20px;
+  min-height: 60px;
 }
 
+// Logo styling
 .logoContainer {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+  
+  .logoImage {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
 }
 
-.logoImage {
-  max-height: 40px;
-  max-width: 150px;
-  height: auto;
-  width: auto;
-}
-
+// Title styling
 .headerTitle {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 600;
-  line-height: 1.2;
-  
-  @media (min-width: 768px) {
-    font-size: 1.75rem;
-  }
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
-// Navigation Styles
+// Navigation container
 .navContainer {
-  width: 100%;
-  
-  @media (min-width: 768px) {
-    width: auto;
-  }
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .navList {
   display: flex;
-  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0;
-  
-  @media (min-width: 768px) {
-    flex-wrap: nowrap;
-    gap: 0;
-  }
+  gap: 30px;
+  align-items: center;
 }
 
 .navItem {
-  flex: 1 1 auto;
-  min-width: 120px;
-  
-  @media (min-width: 768px) {
-    flex: 0 0 auto;
-  }
+  margin: 0;
 }
 
 .navLink {
-  display: block;
-  padding: 0.75rem 1rem;
   text-decoration: none;
-  font-size: 0.875rem;
+  font-size: 16px;
   font-weight: 500;
-  color: #ffffff;
-  transition: background-color 0.2s ease;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: opacity 0.2s;
+  white-space: nowrap;
   
   &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    text-decoration: none;
-  }
-  
-  &:active {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-  
-  @media (min-width: 768px) {
-    padding: 0.75rem 1.5rem;
-    border-bottom: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    
-    &:last-child {
-      border-right: none;
-    }
+    opacity: 0.8;
   }
 }
 
 .noTabs {
-  display: block;
-  padding: 0.75rem 1rem;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
   font-style: italic;
+  opacity: 0.7;
 }
 
-// Welcome Section Styles
+// Welcome section
 .welcomeContainer {
-  width: 100%;
-  padding: 3rem 1rem;
-  background-color: #f3f2f1;
-  color: #323130;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .welcomeContent {
-  max-width: 1400px;
+  max-width: 800px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .welcomeMessage {
-  margin: 0 0 0.5rem 0;
-  font-size: 2rem;
+  font-size: 32px;
   font-weight: 600;
-  line-height: 1.2;
-  
-  @media (min-width: 768px) {
-    font-size: 2.5rem;
-  }
+  margin: 0 0 10px 0;
 }
 
 .welcomeSubtitle {
+  font-size: 18px;
   margin: 0;
-  font-size: 1.125rem;
-  color: inherit;
   opacity: 0.8;
 }
 
-// Loading and Error States
+// Loading state
 .loadingContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
-  text-align: center;
+  padding: 40px;
+  gap: 15px;
 }
 
 .loadingSpinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid #0078d4;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0078d4;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
 }
 
 @keyframes spin {
@@ -196,18 +117,19 @@
   100% { transform: rotate(360deg); }
 }
 
+// Error state
 .errorContainer {
-  padding: 2rem;
+  padding: 20px;
 }
 
 .retryButton {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
   background-color: #0078d4;
   color: white;
   border: none;
-  border-radius: 2px;
+  padding: 10px 20px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 14px;
   
   &:hover {
     background-color: #106ebe;

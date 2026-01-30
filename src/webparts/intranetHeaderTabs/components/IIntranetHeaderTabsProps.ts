@@ -6,6 +6,7 @@ export interface IIntranetHeaderTabsProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   listTitle: string;
+  logoListTitle?: string;
   context: any;
   
   // Header Configuration
@@ -32,4 +33,11 @@ export interface IHeaderTab {
   Created: string;
   Status: number;
   Order?: number;
+}
+export interface IAttachmentFile {
+  Title: string;
+  
+  AttachmentFiles: { ServerRelativeUrl: string }[];
+  Created: string;
+  LogoImageUrl?: string;
 }

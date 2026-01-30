@@ -14,6 +14,7 @@ import IntranetHeaderTabs from './components/IntranetHeaderTabs';
 import { IIntranetHeaderTabsProps } from './components/IIntranetHeaderTabsProps';
 
 export interface IIntranetHeaderTabsWebPartProps {
+  logoListTitle: string;
   description: string;
   headerTitle: string;
   headerTitleColor: string;
@@ -67,7 +68,10 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
         welcomeBackgroundColor: this.properties.welcomeBackgroundColor,
         welcomeTextColor: this.properties.welcomeTextColor,
         welcomeMessage: this.properties.welcomeMessage,
-        maxTabsToShow: this.properties.maxTabsToShow
+        maxTabsToShow: this.properties.maxTabsToShow,
+        logoListTitle: this.properties.logoListTitle || "LogoList"
+        
+        
       }
     );
 
