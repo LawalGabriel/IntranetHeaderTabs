@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  
+
   .logoImage {
     height: 40px;
     width: auto;
@@ -51,6 +51,7 @@
 
 .navItem {
   margin: 0;
+  position: relative; // for dropdown positioning
 }
 
 .navLink {
@@ -59,7 +60,7 @@
   font-weight: 500;
   transition: opacity 0.2s;
   white-space: nowrap;
-  
+
   &:hover {
     opacity: 0.8;
   }
@@ -70,15 +71,74 @@
   opacity: 0.7;
 }
 
-// Welcome section
+// ===== NEW: Our Homes Tab specific =====
+.ourHomesTab {
+  .tabContent {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.dropdownIcon {
+  display: inline-block;
+  font-size: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  line-height: 1;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Dropdown menu
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background-color: #ffffff;
+  border: 1px solid #edebe9;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 8px 0;
+  margin-top: 4px;
+  list-style: none;
+}
+
+.dropdownItem {
+  padding: 0;
+  margin: 0;
+
+  a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.1s;
+
+    &:hover {
+      background-color: #f3f2f1; // fallback; overridden by inline style
+    }
+  }
+}
+
+.dropdownEmpty {
+  display: block;
+  padding: 8px 16px;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+// Welcome section (height now controlled via inline style)
 .welcomeContainer {
   padding: 40px 20px;
   text-align: center;
   position: relative;
-  overflow: hidden; // Add this to contain the shape
-  height: 200px;
-  
-  // Create trapezium shape using clip-path
+  overflow: hidden;
+  // height: 200px;  <-- REMOVED, now set from props
   clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 80%);
 }
 
@@ -99,7 +159,7 @@
   opacity: 0.8;
 }
 
-// Loading state
+// Loading state (unchanged)
 .loadingContainer {
   display: flex;
   flex-direction: column;
@@ -119,11 +179,15 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-// Error state
+// Error state (unchanged)
 .errorContainer {
   padding: 20px;
 }
@@ -136,30 +200,8 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  
+
   &:hover {
     background-color: #106ebe;
-  }
-}
-
-// Title styling
-.headerTitle {
-  margin: 0;
-  font-size: 24px; // Keep as fallback if prop not set
-  font-weight: 600;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-// Navigation link styling
-.navLink {
-  text-decoration: none;
-  font-size: 16px; // Keep as fallback if prop not set
-  font-weight: 500;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-  
-  &:hover {
-    opacity: 0.8;
   }
 }
