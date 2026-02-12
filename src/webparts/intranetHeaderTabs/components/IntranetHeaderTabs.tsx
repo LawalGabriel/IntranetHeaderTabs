@@ -131,7 +131,7 @@ return (
       className={styles.headerContainer}
       style={{ 
         backgroundColor: props.headerBackgroundColor || '#1a1a1a',
-        minHeight: props.headerHeight ? `${props.headerHeight}px` : '60px' // NEW: configurable height
+        minHeight: props.headerHeight ? `${props.headerHeight}px` : '60px' 
       }}
     >
       {/* Logo */}
@@ -154,7 +154,7 @@ return (
         className={styles.headerTitle}
         style={{ 
           color: props.headerTitleColor || props.headerTextColor || '#ffffff',
-          fontSize: props.headerTitleFontSize || '24px' // NEW: configurable font size
+          fontSize: props.headerTitleFontSize || '24px' 
         }}
       >
         {props.headerTitle || 'HUB'}
@@ -189,23 +189,25 @@ return (
       </nav>
     </div>
 
-    {/* Welcome Section - Trapezium shape */}
-    <div 
-      className={styles.welcomeContainer}
-      style={{ 
-        backgroundColor: props.welcomeBackgroundColor || '#f3f2f1',
-        color: props.welcomeTextColor || '#323130'
-      }}
-    >
-      <div className={styles.welcomeContent}>
-        <h2 className={styles.welcomeMessage}>
-          {formatWelcomeMessage()}
-        </h2>
-        <p className={styles.welcomeSubtitle}>
-          What do you need help with today?
-        </p>
+{/* 👇 Welcome Section – only shown if showWelcomeSection is true */}
+    {props.showWelcomeSection !== false && (
+      <div 
+        className={styles.welcomeContainer}
+        style={{ 
+          backgroundColor: props.welcomeBackgroundColor || '#f3f2f1',
+          color: props.welcomeTextColor || '#323130'
+        }}
+      >
+        <div className={styles.welcomeContent}>
+          <h2 className={styles.welcomeMessage}>
+            {formatWelcomeMessage()}
+          </h2>
+          <p className={styles.welcomeSubtitle}>
+            What do you need help with today?
+          </p>
+        </div>
       </div>
-    </div>
+    )}
   </div>
 );
 };

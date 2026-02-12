@@ -25,6 +25,8 @@ export interface IIntranetHeaderTabsProps {
   welcomeBackgroundColor: string;
   welcomeTextColor: string;
   welcomeMessage: string;
+  showWelcomeSection?: boolean; 
+  
   
   // Tabs Configuration
   maxTabsToShow: number;

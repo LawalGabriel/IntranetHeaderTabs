@@ -4,7 +4,7 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneSlider
+  PropertyPaneSlider,PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -29,6 +29,7 @@ export interface IIntranetHeaderTabsWebPartProps {
   welcomeMessage: string;
   maxTabsToShow: number;
   listTitle: string;
+   showWelcomeSection: boolean;
 }
 
 export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIntranetHeaderTabsWebPartProps> {
@@ -51,7 +52,8 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
       listTitle: 'HeaderTabs',
       headerHeight: 60,
     headerTitleFontSize: '24px',
-    tabsFontSize: '16px'
+    tabsFontSize: '16px',
+     showWelcomeSection: true,
     };
   }
 
@@ -78,7 +80,8 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
         logoListTitle: this.properties.logoListTitle || "LogoList",
          headerHeight: this.properties.headerHeight,
       headerTitleFontSize: this.properties.headerTitleFontSize,
-      tabsFontSize: this.properties.tabsFontSize
+      tabsFontSize: this.properties.tabsFontSize,
+        showWelcomeSection: this.properties.showWelcomeSection !== false 
         
         
       }
@@ -211,7 +214,13 @@ export default class IntranetHeaderTabsWebPart extends BaseClientSideWebPart<IIn
                   label: 'Text Color',
                   value: this.properties.welcomeTextColor,
                   description: 'Enter hex color code (e.g., #323130)'
-                })
+                }),
+                PropertyPaneToggle('showWelcomeSection', {
+                label: 'Show Welcome Section',
+                onText: 'Visible',
+                offText: 'Hidden',
+                checked: true   // default state
+              })
               ]
             },
             {
